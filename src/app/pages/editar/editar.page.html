@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    @if (perro; as perro) {
+      <ion-title>Editar a {{ perro.nombre }}</ion-title>
+    }
+    @else {
+      <ion-title>Perro no encontrado</ion-title>
+    }
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  @if (perro; as perro) {
+    <form #formulario="ngForm" (ngSubmit)="guardar(formulario)">
+
+      <ion-list>
+        <ion-list-header>
+          <ion-label class="titulo">Datos del perrito</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-input
+            label="Nombre"
+            labelPlacement="floating"
+            [placeholder]="perro.nombre"
+            name="nombre"
+            [(ngModel)]="nombre"
+            required
+            errorText="El nombre es obligatorio"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Raza"
+            labelPlacement="floating"
+            [placeholder]="perro.raza"
+            name="raza"
+            [(ngModel)]="raza"
+            required
+            errorText="La raza es obligatoria"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Edad"
+            labelPlacement="floating"
+            [placeholder]="perro.edad"
+            name="edad"
+            [(ngModel)]="edad"
+            required
+            errorText="La edad es obligatoria"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-select label="Sexo" name="sexo" [(ngModel)]="sexo">
+            <ion-select-option value="Macho">Macho</ion-select-option>
+            <ion-select-option value="Hembra">Hembra</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-select label="Tamaño" name="tamano" [(ngModel)]="tamano">
+            <ion-select-option value="Pequeño">Pequeño</ion-select-option>
+            <ion-select-option value="Mediano">Mediano</ion-select-option>
+            <ion-select-option value="Grande">Grande</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-toggle name="vacunada" [(ngModel)]="vacunada">Vacunado</ion-toggle>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-toggle name="adoptado" [(ngModel)]="adoptado">Adoptado</ion-toggle>
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header>
+          <ion-label class="titulo">Descripción</ion-label>
+        </ion-list-header>
+
+        <ion-item lines="none">
+          <ion-textarea
+            label="Cuéntanos de él"
+            labelPlacement="floating"
+            [placeholder]="perro.descripcion"
+            [autoGrow]="true"
+            rows="3"
+            name="descripcion"
+            [(ngModel)]="descripcion"></ion-textarea>
+        </ion-item>
+      </ion-list>
+
+      <div class="ion-padding">
+        <ion-button expand="block" type="submit" [disabled]="formulario.invalid">
+          Guardar cambios
+        </ion-button>
+      </div>
+
+    </form>
+  }
+  @else {
+    <p class="ion-padding">No encontramos ese perro.</p>
+  }
+</ion-content>

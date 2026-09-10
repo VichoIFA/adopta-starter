@@ -68,4 +68,11 @@ export class PerrosService {
   agregar(perro: Perro): void {
     this.perros.push(perro);
   }
+
+  actualizar(id: number, cambios: Partial<Perro>): void {
+    const perro = this.perros.find(perro => perro.id === id);
+    if (perro) {
+      Object.assign(perro, cambios);
+    }
+  }
 }

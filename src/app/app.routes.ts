@@ -16,4 +16,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/nuevo/nuevo.page').then((m) => m.NuevoPage),
   },
+  {
+    path: 'editar/:id',
+    loadComponent: () => import('./pages/editar/editar.page').then( m => m.EditarPage)
+  },
 ];

@@ -52,6 +52,18 @@
         <ion-label class="ion-text-wrap">{{ perro.descripcion }}</ion-label>
       </ion-item>
     </ion-list>
+
+    <div class="ion-padding">
+      <ion-button expand="block" [routerLink]="['/editar', perro.id]">
+        Editar datos
+      </ion-button>
+
+      @if (!perro.adoptado) {
+        <ion-button class="adoptar"  expand="block" color="success" (click)="adoptar()">
+          Adoptar
+        </ion-button>
+      }
+    </div>
   }
   @else {
     <p class="ion-padding">No encontramos ese perro.</p>

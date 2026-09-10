@@ -2,7 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton, IonList,
-  IonItem, IonLabel, IonNote, IonListHeader } from '@ionic/angular/standalone';
+  IonItem, IonLabel, IonNote, IonListHeader, IonButton } from '@ionic/angular/standalone';
 import { PerrosService } from '../../services/perros.service';
 
 
@@ -13,7 +13,7 @@ import { PerrosService } from '../../services/perros.service';
   standalone: true,
   imports: [IonHeader, IonToolbar, IonTitle, IonContent,
     IonButtons, IonBackButton, IonList,
-    IonItem, IonLabel, IonNote, IonListHeader],
+    IonItem, IonLabel, IonNote, IonListHeader, IonButton, RouterLink],
 })
 export class DetallePage {
   private route = inject(ActivatedRoute);
@@ -21,4 +21,11 @@ export class DetallePage {
   private id = this.route.snapshot.paramMap.get('id') ?? '';
 
   perro = computed(() => this.perrosService.obtener(this.id));
+
+  adoptar(): void {
+    const perro = this.perro();
+    if (perro) {
+      this.perrosService.actualizar(perro.id, { adoptado: true });
+    }
+  }
 }
