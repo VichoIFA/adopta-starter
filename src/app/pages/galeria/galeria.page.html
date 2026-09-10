@@ -5,4 +5,20 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      @for (perro of perros(); track perro.id){
+        <ion-col size="6">
+          <app-tarjeta-perro [perro]="perro" />
+        </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button class="fab-extendido"[routerLink]="['/nuevo']">
+      <ion-icon name="add"></ion-icon>
+      <span>Aregar Perrito</span>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

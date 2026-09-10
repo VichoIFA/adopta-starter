@@ -1,1 +1,37 @@
-/* TODO: estilos de la tarjeta del perro (agrégalos a medida que la armes). */
+.carta {
+    transition: transform 0.3s ease, --background 0.3s ease, background-color 0.3s ease; 
+    cursor: pointer;
+}
+
+.carta:hover {
+    transform: scale(1.05);
+}
+
+.foto-wrapper img {
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+.estado {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.vacunada {
+    margin-top: 6px;
+    font-size: 0.75rem;
+    color: var(--ion-color-success);
+}
+
+.no-vacunada {
+    margin-top: 6px;
+    font-size: 0.75rem;
+    color: var(--ion-color-danger);
+}
+
+.presentacion {
+    display: flex;
+    align-items: baseline;   // Alinea las lineas base del texto, no las cajas
+    gap: 4px 10px;
+}

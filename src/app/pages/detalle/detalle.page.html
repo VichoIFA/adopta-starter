@@ -1,8 +1,59 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Detalle</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    @if (perro(); as perro){
+      <ion-title>Detalle de {{perro.nombre}}</ion-title>
+    }
+    @else {
+      <ion-title>Perro no encontrado</ion-title>
+    }
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
+  @if (perro(); as perro) {
+    <img [src]="perro.foto" [alt]="'Foto de ' + perro.nombre">
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label>Estado</ion-label>
+        <ion-note class="listado" slot="end" [color]="perro.adoptado ? 'success' : 'danger'">
+          {{ perro.adoptado ? 'Adoptado' : 'No adoptado' }}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Edad</ion-label>
+        <ion-note class="listado" slot="end">{{ perro.edad }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Sexo</ion-label>
+        <ion-note class="listado" slot="end">{{ perro.sexo }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tamaño</ion-label>
+        <ion-note class="listado" slot="end">{{ perro.tamano }}</ion-note>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Vacunado</ion-label>
+        <ion-note class="listado" slot="end" [color]="perro.vacunada ? 'success' : 'danger'">
+          {{ perro.vacunada ? 'Sí' : 'No' }}
+        </ion-note>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label class="titulo">Sobre {{ perro.nombre }}</ion-label>
+      </ion-list-header>
+      <ion-item lines="none">
+        <ion-label class="ion-text-wrap">{{ perro.descripcion }}</ion-label>
+      </ion-item>
+    </ion-list>
+  }
+  @else {
+    <p class="ion-padding">No encontramos ese perro.</p>
+  }
 </ion-content>

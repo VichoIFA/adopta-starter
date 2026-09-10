@@ -1,7 +1,26 @@
-<!-- TODO: arma la tarjeta del perro.
-     Tienes todos sus datos en `perro`: nombre, raza, edad, foto, adoptado…
+<ion-card class="carta" [routerLink]="['/detalle', perro.id]">
+  <div class="foto-wrapper">
+    <img [src]="perro.foto" [alt]="'Foto de ' + perro.nombre">
+    <ion-badge class="estado" [color]="perro.adoptado ? 'success' : 'danger'">
+      {{ perro.adoptado ? 'Adoptado' : 'No Adoptado' }}
+    </ion-badge>
+  </div>
 
-     Varios caminos llevan a Roma: una opción es un ion-card con la foto y un
-     badge de estado (Adoptado / Disponible), pero puedes hacerlo a tu manera.
+  <ion-card-header>
+    <div class="presentacion">
+      <ion-card-title>{{ perro.nombre }}</ion-card-title>
+      <ion-card-subtitle>{{ perro.raza }}</ion-card-subtitle>
+    </div>
+  </ion-card-header>
 
-     ¿Necesitas una referencia? Mira la galería de adopta-app. -->
+  <ion-card-content>
+      <div>{{ perro.edad }}, {{ perro.sexo }}</div>
+    @if (perro.vacunada) {
+      <div class="vacunada">Vacunado</div>
+    } @else if (perro.sexo == "Hembra") {
+      <div class="no-vacunada">No vacunada</div>
+    } @else {
+      <div class="no-vacunada">No vacunado</div>
+    }
+  </ion-card-content>
+</ion-card>
