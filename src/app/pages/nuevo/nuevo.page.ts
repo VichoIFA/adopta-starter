@@ -48,6 +48,6 @@ export class NuevoPage {
       adoptado: false,
     });
 
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/galeria');
   }
 }

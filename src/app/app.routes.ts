@@ -4,6 +4,21 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
+      import('./pages/inicio/inicio.page').then((m) => m.InicioPage),
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.page').then((m) => m.LoginPage),
+  },
+  {
+    path: 'registro',
+    loadComponent: () =>
+      import('./pages/registro/registro.page').then((m) => m.RegistroPage),
+  },
+  {
+    path: 'galeria',
+    loadComponent: () =>
       import('./pages/galeria/galeria.page').then((m) => m.GaleriaPage),
   },
   {

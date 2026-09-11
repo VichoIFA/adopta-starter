@@ -1,0 +1,49 @@
+<ion-content class="ion-padding">
+  <form #formulario="ngForm" (ngSubmit)="registrar(formulario)" class="contenedor">
+    <img class="logo" src="https://cdn-icons-png.flaticon.com/512/1491/1491099.png" alt="Adopta" />
+
+    <ion-list>
+      <ion-item>
+        <ion-input
+          label="Nombre de usuario"
+          labelPlacement="floating"
+          placeholder="rocky123"
+          name="nombre"
+          [(ngModel)]="nombre"
+          required
+          errorText="El nombre de usuario es obligatorio"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          label="Contraseña"
+          labelPlacement="floating"
+          type="password"
+          name="clave"
+          [(ngModel)]="clave"
+          required
+          errorText="La contraseña es obligatoria"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-input
+          label="Correo"
+          labelPlacement="floating"
+          placeholder="correo@ejemplo.com"
+          type="email"
+          name="correo"
+          [(ngModel)]="correo"
+          required
+          errorText="El correo es obligatorio"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" type="submit" [disabled]="formulario.invalid">
+      Registrarse
+    </ion-button>
+
+    <ion-button expand="block" fill="clear" [routerLink]="['/']">
+      Volver
+    </ion-button>
+  </form>
+</ion-content>

@@ -1,6 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Galería</ion-title>
+    <ion-title>
+      Galería
+      @if (usuario(); as usuario) {
+        <ion-note class="correo">{{ usuario.correo }}</ion-note>
+      }
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="salir()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        Salir
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
